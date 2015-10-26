@@ -4,6 +4,9 @@
 	font-weight: normal;
 	font-style: normal;
 }
+* {
+	box-sizing: border-box;
+}
 h1, .title {
 	font-size: 36pt;
 	font-weight: bold;
@@ -15,14 +18,18 @@ h2 {
 	font-weight: normal;
 	margin-bottom: 1em;
 }
+body > div {
+	width: 100%;
+	height: 100%;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
 div.content, input {
 	font-family: "LeagueGothic";
 	font-size: 24pt;
 	width: 50%;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 1em;
-	margin-bottom: 1em;
 }
 div.content p { 
 	display: none;
