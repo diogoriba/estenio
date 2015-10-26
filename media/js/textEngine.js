@@ -1,12 +1,17 @@
-var typeInterval = 15;
+// data-ttd: time-to-display - amount of time it waits before displaying a text node
+// data-content: simply show the content of this node without doing the typewriter effect
+// data-display-after: display after node number N
+var typeInterval = 25;
 function showNext(elements, current) {
 	current += 1;
 	if (current < elements.length) {
 		var line = $(elements[current]);
-		var time = line.data("ttd");
+		var displayAfter = $("p[data-display-after=" + current +"]");
+		var time = line.data("ttd") || 0;
 		if (line.data("content")) {
 			setTimeout(function () {
 				line.show();
+				showNext(displayAfter, -1);
 				showNext(elements, current);
 			}, time);
 		} else {
@@ -22,6 +27,7 @@ function showNext(elements, current) {
 					typingTime += typeInterval;
 				});
 				setTimeout(function () {
+					showNext(displayAfter, -1);
 					showNext(elements, current);
 				}, typingTime + 1);
 			}, time);
@@ -31,7 +37,4 @@ function showNext(elements, current) {
 $(document).ready(function () {
 	var gameText = $("#content p");
 	showNext(gameText, -1);
-
-	var options = $("#options p");
-	showNext(options, -1);
 });
