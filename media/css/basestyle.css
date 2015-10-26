@@ -41,8 +41,26 @@ a {
 	color: #FF9C00;
 	text-shadow: 2px 2px #CCCCCC;
 }
-
 a[disabled] {
 	color: #777777;
 	pointer-events: none;
+}
+.trophy {
+	text-align: center;
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 350px;
+	height: 300px;
+}
+.trophy p {
+	font-size: 18pt;
+	vertical-align: middle;
+	float: left;
+	margin: 0;
+}
+.trophy img {
+	max-width: 50px;
+	float: left;
 }

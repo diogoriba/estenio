@@ -17,9 +17,15 @@
 			</div>
 			<div id="options" class="content">
 				<p data-display-after="2" data-content=true>
-					<a href="freedom.html">E DEPOIS? E DEPOIS?</a>
+					<a id="andThen" href="freedom.html">E DEPOIS? E DEPOIS?</a>
 				</p>
 			</div>
 		</div>
+		<script>
+			if (localStorage.getItem("oneDoor")) {
+				var andThenLink = $("#andThen");
+				andThenLink.prop("href", "./kindaFreedom.html");
+			}
+		</script>
 	</body>
 </html>

@@ -14,9 +14,25 @@
 
 				<div><a href="./intro.html">Clique aqui para iniciar.</a></div>
 			</div>
+			<div class="trophy">
+				<img src="./media/images/trophy.png">
+				<p>Parabéns! Você obteve todos os finais!</p>
+			</div>
 		</div>
 		<script>
 			localStorage.removeItem("warehouse");
+			localStorage.removeItem("oneDoor");
+
+			if (
+				localStorage.getItem("explosionEnding") &&
+				localStorage.getItem("mehEnding") &&
+				localStorage.getItem("freedomEnding") &&
+				localStorage.getItem("choicesEnding") &&
+				localStorage.getItem("cheatEnding")
+				) {
+				var trophy = $(".trophy");
+				trophy.show();
+			}
 		</script>
 	</body>
 </html>
