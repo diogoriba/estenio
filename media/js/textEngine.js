@@ -3,7 +3,11 @@
 // data-display-after: display after node number N
 var typeInterval = 28;
 var skip = window.location.hash === "#skip";
-function showNext(elements, current) {
+function scrollToBottom() {
+	var body = $("body");
+	body.scrollTop(body.height());
+}
+function showNext(elements, current, preventDisplayAfter) {
 	current += 1;
 	if (current < elements.length) {
 		var line = $(elements[current]);
@@ -14,29 +18,37 @@ function showNext(elements, current) {
 		if (skippable) {
 			time = 0;
 		}
-		if (line.data("content") || skippable) {
-			setTimeout(function () {
-				line.show();
-				showNext(displayAfter, -1);
-				showNext(elements, current);
-			}, time);
-		} else {
-			setTimeout(function () {
-				var typingTime = 0;
-				var text = line.text();
-				line.empty();
-				line.show();
-				text.split('').forEach(function (ch) {
-					setTimeout(function () { 
-						line.append(ch);
-					}, typingTime);
-					typingTime += typeInterval;
-				});
-				var endTimer = setTimeout(function () {
-					showNext(displayAfter, -1);
+		if (time >= 0) {
+			if (line.data("content") || skippable) {
+				setTimeout(function () {
+					line.show();
+					if (!preventDisplayAfter) {
+						showNext(displayAfter, -1, true);
+					}
 					showNext(elements, current);
-				}, typingTime + 1);
-			}, time);
+					scrollToBottom();
+				}, time);
+			} else {
+				setTimeout(function () {
+					var typingTime = 0;
+					var text = line.text();
+					line.empty();
+					line.show();
+					text.split('').forEach(function (ch) {
+						setTimeout(function () { 
+							line.append(ch);
+							scrollToBottom();
+						}, typingTime);
+						typingTime += typeInterval;
+					});
+					var endTimer = setTimeout(function () {
+						if (!preventDisplayAfter) {
+							showNext(displayAfter, -1, true);
+						}
+						showNext(elements, current);
+					}, typingTime + 1);
+				}, time);
+			}
 		}
 	}
 }

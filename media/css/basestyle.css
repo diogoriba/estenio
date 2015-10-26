@@ -4,7 +4,7 @@
 	font-weight: normal;
 	font-style: normal;
 }
-h1 {
+h1, .title {
 	font-size: 36pt;
 	font-weight: bold;
 	margin-top: 50%;

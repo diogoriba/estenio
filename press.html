@@ -5,11 +5,81 @@
 		<script src="./media/js/jquery-1.11.3.min.js"></script>
 		<script src="./media/js/textEngine.js"></script>
 		<link rel="stylesheet" type="text/css" href="./media/css/basestyle.css" />
+		<style>
+			@font-face {
+				font-family: "LCD";
+				src: url("./media/css/LCD-BOLD.ttf");
+			}
+		</style>
 	</head>
 	<body>
 		<div>
 			<div id="content" class="content">
-				<p>TBD</p>
+				<p data-ttd="0">NARRADOR: Estênio, estávamos indo tão bem…</p>
+
+				<p data-ttd="500">NARRADOR: Por que você TEVE que apertar o botão vermelho? Eu disse que não era para apertar o grande e vermelho botão no centro da sala. Eu fiz tudo para você chegar até aqui por sua livre escolha e você resolve apertar esse MALDITO GRANDE E VERMELHO BOTÃO NO CENTRO DA SALA!</p>
+
+				<p data-ttd="1000">NARRADOR: Estou desapontado com você. Se é assim que você quer seguir nessa história que planejei com tanto cuidado pensando em você, que assim seja.</p>
+
+				<p data-ttd="1000">NARRADOR: Você achou que poderia simplesmente estragar a minha história? Que poderia sair e fazer as escolhas que bem entende? Não, não, meu caro amigo… Você não faz ideia da dor que eu sinto por você ter negligenciado a minha maravilhosa narrativa, que tive anos de planejamento e cuidado para entreter você, Estênio.</p>
+
+				<p data-ttd="1000">NARRADOR: Subitamente todas as telas se apagam e passam a mostrar uma contagem regressiva.</p>
+
+				<p id="timerDiv" data-ttd="0" data-secret=true data-content=true>
+					<div id="timer" style="font-family: LCD; font-size: 36pt;"></div>
+					<script>
+						jQuery(function ($) {
+							var _oldShow = $.fn.show;
+							$.fn.show = function () {
+								var obj = $(this);
+								if (obj.attr("id") === "timerDiv") {
+									var timeToWaitInSeconds = 30;
+									var time = 0;
+									var timerUI = $("#timer");
+									function pad(val, len) {
+							           val = String(val);
+							           len = len || 2;
+							           while (val.length < len) val = "0" + val;
+							           return val;
+							        };
+									var timer = setInterval(function () {
+										var remainingTime = timeToWaitInSeconds - time;
+									 	var remainingMinutes = parseInt(remainingTime / 60);
+									 	var remainingSeconds = remainingTime - (remainingMinutes * 60);
+									 	timerUI.text(pad(remainingMinutes, 2) + ":" + pad(remainingSeconds, 2));
+
+									 	var remainingElements = $("p[data-remaining=" +remainingTime + "]");
+									 	remainingElements.data("ttd", 0)
+									 	showNext(remainingElements, -1, true);
+
+									 	if (remainingTime <= 10) {
+									 		timerUI.css("color", "#FF9C00");
+									 	}
+									 	if (remainingTime <= 0) {
+									 		clearInterval(timer);
+									 		window.location = "./boom.html";
+									 	}
+									 	time += 1;
+									 }, 1000);
+								}
+
+								_oldShow.apply(obj, arguments);
+							};
+						});
+					</script>
+				</p>
+
+				<p data-ttd="-1" data-remaining="30" data-secret=true>NARRADOR: 30 segundos. Pense bem no que você fez, Estênio.</p>
+
+				<p data-ttd="-1" data-remaining="25" data-secret=true>NARRADOR: 25 segundos. Então, Estênio, você já se arrependeu das suas escolhas?</p>
+
+				<p data-ttd="-1" data-remaining="20" data-secret=true>NARRADOR: 20 segundos. Eu tinha escrito uma história tão bonita, com Storm Troopers e neve…  Espera ai! Acho que estou pensando em “O império contra ataca”.</p>
+
+				<p data-ttd="-1" data-remaining="15" data-secret=true>NARRADOR: 15 segundos. Viu o que acontece quando você tenta demonstrar individualidade e iniciativa? Eu escolhi você pela total ausência de personalidade e mesmo assim você conseguiu estragar tudo.</p>
+
+				<p data-ttd="-1" data-remaining="8" data-secret=true>NARRADOR: Menos de 10 segundos. Sabia que deveria ter escolhido o Stanley...</p>
+
+				<p data-ttd="-1" data-remaining="5" data-secret=true>NARRADOR: 5 segundos. Você foi a maior decepção dessa história. Adeus Estênio.</p>
 			</div>
 			<div id="options" class="content">
 				<p data-display-after="0" data-content=true>
