@@ -3,6 +3,13 @@
 // data-display-after: display after node number N
 var typeInterval = 28;
 var skip = window.location.hash === "#skip";
+var timers = [];
+function skipButton() {
+	skip = true;
+	timers.forEach(clearTimeout);
+	var gameText = $("#content p");
+	showNext(gameText, -1);
+}
 function scrollToBottom() {
 	var body = $("body");
 	body.scrollTop(body.height());
@@ -15,12 +22,13 @@ function showNext(elements, current, preventDisplayAfter) {
 		var time = line.data("ttd") || 0;
 		var secret = line.data("secret") || false;
 		var skippable = skip && !secret;
+		var timer;
 		if (skippable) {
 			time = 0;
 		}
 		if (time >= 0) {
 			if (line.data("content") || skippable) {
-				setTimeout(function () {
+				timer = setTimeout(function () {
 					line.show();
 					if (!preventDisplayAfter) {
 						showNext(displayAfter, -1, true);
@@ -29,26 +37,34 @@ function showNext(elements, current, preventDisplayAfter) {
 					scrollToBottom();
 				}, time);
 			} else {
-				setTimeout(function () {
+				timer = setTimeout(function () {
 					var typingTime = 0;
 					var text = line.text();
 					line.empty();
 					line.show();
+					var charTimers = [];
 					text.split('').forEach(function (ch) {
-						setTimeout(function () { 
+						charTimers.push(setTimeout(function () { 
 							line.append(ch);
 							scrollToBottom();
-						}, typingTime);
+
+							if (skip && !secret) {
+								charTimers.forEach(clearTimeout);
+								line.text(text);
+								scrollToBottom();
+							}
+						}, typingTime));
 						typingTime += typeInterval;
 					});
-					var endTimer = setTimeout(function () {
+					timers.push(setTimeout(function () {
 						if (!preventDisplayAfter) {
 							showNext(displayAfter, -1, true);
 						}
 						showNext(elements, current);
-					}, typingTime + 1);
+					}, typingTime + 1));
 				}, time);
 			}
+			timers.push(timer);
 		}
 	}
 }
@@ -59,7 +75,7 @@ $(document).ready(function () {
 	$(document).keyup(function (e) {
 		var key = e.keyCode || e.which;
 		if (key === 27) {
-			skip = true;
+			skipButton();
 		}
 	});
 });
