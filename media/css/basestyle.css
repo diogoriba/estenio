@@ -24,4 +24,9 @@ div.content, input {
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
-div.content p { display: none; }
+div.content p { 
+	display: none;
+}
+img {
+	max-width: 600px;
+}
