@@ -7,7 +7,8 @@ var timers = [];
 function skipButton() {
 	skip = true;
 	timers.forEach(clearTimeout);
-	var gameText = $("#content p");
+	timers = [];
+	var gameText = $("#content p:not([data-secret])");
 	showNext(gameText, -1);
 }
 function scrollToBottom() {
@@ -56,15 +57,20 @@ function showNext(elements, current, preventDisplayAfter) {
 						}, typingTime));
 						typingTime += typeInterval;
 					});
-					timers.push(setTimeout(function () {
+					var t = setTimeout(function () {
 						if (!preventDisplayAfter) {
 							showNext(displayAfter, -1, true);
 						}
 						showNext(elements, current);
-					}, typingTime + 1));
+					}, typingTime + 1);
+					if (skippable) {
+						timers.push(t);
+					}
 				}, time);
 			}
-			timers.push(timer);
+			if (skippable) {
+				timers.push(timer);
+			}
 		}
 	}
 }
