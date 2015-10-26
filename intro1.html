@@ -17,8 +17,16 @@
 				<p data-ttd="10000" data-secret=true>NARRADOR: Estênio começou a ter muita câimbra por ficar parado no mesmo lugar olhando para uma tela <strong>que não tinha nenhum link</strong>.</p>
 			</div>
 			<div id="options" class="content">
-				<p data-display-after="3" data-content=true><a href="./twoDoors.html">Levantar da cadeira e ir dar uma volta no corredor.</a></p>
+				<p data-display-after="3" data-content=true>
+					<a id="getup" href="./twoDoors.html">Levantar da cadeira e ir dar uma volta no corredor.</a>
+				</p>
 			</div>
 		</div>
+		<script>
+			if (localStorage.getItem("warehouse")) {
+				var getupLink = $("#getup");
+				getupLink.text("Levantar da cadei-... Ué.");
+			}
+		</script>
 	</body>
 </html>
