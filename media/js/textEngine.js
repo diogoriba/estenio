@@ -78,4 +78,6 @@ $(document).ready(function () {
 			skipButton();
 		}
 	});
+
+	$(".skip").click(skipButton);
 });

@@ -64,3 +64,13 @@ a[disabled] {
 	max-width: 50px;
 	float: left;
 }
+.skip {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	margin: 0;
+	text-align: right;
+}
+.skip input {
+	width: 300px;
+}
