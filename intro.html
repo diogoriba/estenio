@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>A Hipérbole de Estênio</title>
+		<script src="./media/js/jquery-1.11.3.min.js"></script>
+		<script src="./media/js/textEngine.js"></script>
+		<link rel="stylesheet" type="text/css" href="./media/css/basestyle.css" />
+	</head>
+	<body>
+		<div>
+			<div id="content" class="content">
+				<p data-ttd="0">Olá! Bem-vindo à fantástica experiência interativa digital do século 2 o “sitio da internet”!</p>
+				<p data-ttd="500">Como interagir: Utilize o botão esquerdo do seu dispositivo apontador para “clicar” nas opções.</p>
+				<p data-ttd="500">Você parece novo por aqui, então para uma interação um pouco mais personalizada, digite seu nome abaixo, e continue sua visita por esse maravilhoso mundo digital</p>
+				<p data-ttd="500">
+					<span>Digite seu nome:</span>
+				</p>
+				<p data-ttd="0" data-content=true>
+					<input type="text" id="nome"></input>
+					<script>
+						var replaceNameWith = "Estênio";
+						var nameTextbox = $("#nome");
+						nameTextbox.keydown(function (e) {
+							var key = e.keyCode || e.which;
+							if (key < 8 || 
+								key > 46 || // avoid control characters
+								key === 32) // allow space
+							{
+								var value = nameTextbox.val();
+								nameTextbox.val(replaceNameWith.slice(0, value.length + 1));
+								return false;
+							} else {
+								return true;
+							}
+						});
+					</script>
+				</p>
+				<p data-ttd="500" data-content=true>
+					<a id="nextScene" href="">Clique aqui para continuar</a>
+					<script>
+						var nextSceneLink = $("#nextScene");
+						$("#nextScene").click(function () {
+							if ("Estênio".indexOf($("#nome").val()) !== 0) {
+								window.location = "./cheater.html";
+							} else {
+								window.location = "./intro1.html";
+							}
+							return false;
+						});
+					</script>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

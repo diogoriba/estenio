@@ -1,0 +1,27 @@
+@font-face {
+	font-family: "LeagueGothic";
+	src: url("./leaguegothic-regular-webfont.ttf");
+	font-weight: normal;
+	font-style: normal;
+}
+h1 {
+	font-size: 36pt;
+	font-weight: bold;
+	margin-top: 50%;
+}
+h2 {
+	color: #999999;
+	font-size: 24pt;
+	font-weight: normal;
+	margin-bottom: 1em;
+}
+div.content {
+	font-family: "LeagueGothic";
+	font-size: 24pt;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+div.content p { display: none; }
