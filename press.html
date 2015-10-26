@@ -33,7 +33,8 @@
 							$.fn.show = function () {
 								var obj = $(this);
 								if (obj.attr("id") === "timerDiv") {
-									var timeToWaitInSeconds = 30;
+									localStorage.setItem("countdown", true);
+									var timeToWaitInSeconds = 60;
 									var time = 0;
 									var timerUI = $("#timer");
 									function pad(val, len) {
@@ -69,17 +70,17 @@
 					</script>
 				</p>
 
-				<p data-ttd="-1" data-remaining="30" data-secret=true>NARRADOR: 30 segundos. Pense bem no que você fez, Estênio.</p>
+				<p data-ttd="-1" data-remaining="60" data-secret=true>NARRADOR: 60 segundos. Pense bem no que você fez, Estênio.</p>
 
-				<p data-ttd="-1" data-remaining="25" data-secret=true>NARRADOR: 25 segundos. Então, Estênio, você já se arrependeu das suas escolhas?</p>
+				<p data-ttd="-1" data-remaining="50" data-secret=true>NARRADOR: 50 segundos. Então, Estênio, você já se arrependeu das suas escolhas?</p>
 
-				<p data-ttd="-1" data-remaining="20" data-secret=true>NARRADOR: 20 segundos. Eu tinha escrito uma história tão bonita, com Storm Troopers e neve…  Espera ai! Acho que estou pensando em “O império contra ataca”.</p>
+				<p data-ttd="-1" data-remaining="40" data-secret=true>NARRADOR: 40 segundos. Eu tinha escrito uma história tão bonita, com Storm Troopers e neve…  Espera ai! Acho que estou pensando em “O império contra ataca”.</p>
 
-				<p data-ttd="-1" data-remaining="15" data-secret=true>NARRADOR: 15 segundos. Viu o que acontece quando você tenta demonstrar individualidade e iniciativa? Eu escolhi você pela total ausência de personalidade e mesmo assim você conseguiu estragar tudo.</p>
+				<p data-ttd="-1" data-remaining="30" data-secret=true>NARRADOR: 30 segundos. Viu o que acontece quando você tenta demonstrar individualidade e iniciativa? Eu escolhi você pela total ausência de personalidade e mesmo assim você conseguiu estragar tudo.</p>
 
-				<p data-ttd="-1" data-remaining="8" data-secret=true>NARRADOR: Menos de 10 segundos. Sabia que deveria ter escolhido o Stanley...</p>
+				<p data-ttd="-1" data-remaining="20" data-secret=true>NARRADOR: Menos de 20 segundos. Sabia que deveria ter escolhido o Stanley...</p>
 
-				<p data-ttd="-1" data-remaining="5" data-secret=true>NARRADOR: 5 segundos. Você foi a maior decepção dessa história. Adeus Estênio.</p>
+				<p data-ttd="-1" data-remaining="10" data-secret=true>NARRADOR: 10 segundos. Você foi a maior decepção dessa história. Adeus Estênio.</p>
 			</div>
 			<div id="options" class="content">
 				<p data-display-after="0" data-content=true>

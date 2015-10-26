@@ -30,5 +30,10 @@
 		<script>
 			localStorage.setItem("oneDoor", "visited");
 		</script>
+		<script>
+			if (localStorage.getItem("countdown")) {
+				window.location = "./goodEnding.html";
+			}
+		</script>
 	</body>
 </html>

@@ -12,7 +12,7 @@
 	<body>
 		<div>
 			<div id="content" class="content">
-				<p data-ttd="0">Olá! Bem-vindo à fantástica experiência interativa digital do século 2 o “sitio da internet”!</p>
+				<p data-ttd="0">Olá! Bem-vindo à fantástica experiência interativa digital do século 21 o “sitio da internet”!</p>
 				<p data-ttd="500">Como interagir: Utilize o botão esquerdo do seu dispositivo apontador para “clicar” nas opções.</p>
 				<p data-ttd="500">Você parece novo por aqui, então para uma interação um pouco mais personalizada, digite seu nome abaixo, e continue sua visita por esse maravilhoso mundo digital</p>
 				<p data-ttd="500" data-content=true>
@@ -61,5 +61,10 @@
 				<input type="button" value="▶▶ Pular">
 			</div>
 		</div>
+		<script>
+			if (localStorage.getItem("countdown")) {
+				window.location = "./goodEnding.html";
+			}
+		</script>
 	</body>
 </html>

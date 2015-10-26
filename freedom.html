@@ -29,5 +29,10 @@
 			localStorage.removeItem("warehouse");
 			localStorage.removeItem("oneDoor");
 		</script>
+		<script>
+			if (localStorage.getItem("countdown")) {
+				window.location = "./goodEnding.html";
+			}
+		</script>
 	</body>
 </html>
