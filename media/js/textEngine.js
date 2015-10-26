@@ -1,7 +1,7 @@
 // data-ttd: time-to-display - amount of time it waits before displaying a text node
 // data-content: simply show the content of this node without doing the typewriter effect
 // data-display-after: display after node number N
-var typeInterval = 25;
+var typeInterval = 28;
 function showNext(elements, current) {
 	current += 1;
 	if (current < elements.length) {
