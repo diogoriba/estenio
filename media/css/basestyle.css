@@ -37,3 +37,12 @@ div.content p {
 img {
 	max-width: 600px;
 }
+a {
+	color: #FF9C00;
+	text-shadow: 2px 2px #CCCCCC;
+}
+
+a[disabled] {
+	color: #777777;
+	pointer-events: none;
+}
