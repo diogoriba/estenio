@@ -2,13 +2,19 @@
 // data-content: simply show the content of this node without doing the typewriter effect
 // data-display-after: display after node number N
 var typeInterval = 28;
+var skip = window.location.hash === "#skip";
 function showNext(elements, current) {
 	current += 1;
 	if (current < elements.length) {
 		var line = $(elements[current]);
 		var displayAfter = $("p[data-display-after=" + current +"]");
 		var time = line.data("ttd") || 0;
-		if (line.data("content")) {
+		var secret = line.data("secret") || false;
+		var skippable = skip && !secret;
+		if (skippable) {
+			time = 0;
+		}
+		if (line.data("content") || skippable) {
 			setTimeout(function () {
 				line.show();
 				showNext(displayAfter, -1);
@@ -26,7 +32,7 @@ function showNext(elements, current) {
 					}, typingTime);
 					typingTime += typeInterval;
 				});
-				setTimeout(function () {
+				var endTimer = setTimeout(function () {
 					showNext(displayAfter, -1);
 					showNext(elements, current);
 				}, typingTime + 1);
@@ -37,4 +43,11 @@ function showNext(elements, current) {
 $(document).ready(function () {
 	var gameText = $("#content p");
 	showNext(gameText, -1);
+
+	$(document).keyup(function (e) {
+		var key = e.keyCode || e.which;
+		if (key === 27) {
+			skip = true;
+		}
+	});
 });

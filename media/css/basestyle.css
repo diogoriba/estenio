@@ -15,7 +15,7 @@ h2 {
 	font-weight: normal;
 	margin-bottom: 1em;
 }
-div.content {
+div.content, input {
 	font-family: "LeagueGothic";
 	font-size: 24pt;
 	width: 50%;

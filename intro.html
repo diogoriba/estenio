@@ -5,6 +5,9 @@
 		<script src="./media/js/jquery-1.11.3.min.js"></script>
 		<script src="./media/js/textEngine.js"></script>
 		<link rel="stylesheet" type="text/css" href="./media/css/basestyle.css" />
+		<style>
+			.error { color: #FF9C00; }
+		</style>
 	</head>
 	<body>
 		<div>
@@ -12,11 +15,10 @@
 				<p data-ttd="0">Olá! Bem-vindo à fantástica experiência interativa digital do século 2 o “sitio da internet”!</p>
 				<p data-ttd="500">Como interagir: Utilize o botão esquerdo do seu dispositivo apontador para “clicar” nas opções.</p>
 				<p data-ttd="500">Você parece novo por aqui, então para uma interação um pouco mais personalizada, digite seu nome abaixo, e continue sua visita por esse maravilhoso mundo digital</p>
-				<p data-ttd="500">
-					<span>Digite seu nome:</span>
-				</p>
-				<p data-ttd="0" data-content=true>
-					<input type="text" id="nome"></input>
+				<p data-ttd="500" data-content=true>
+					<span>Digite seu nome: </span>
+					<input type="text" id="nome">
+					<div class="error"></div>
 					<script>
 						var replaceNameWith = "Estênio";
 						var nameTextbox = $("#nome");
@@ -40,10 +42,15 @@
 					<script>
 						var nextSceneLink = $("#nextScene");
 						$("#nextScene").click(function () {
-							if ("Estênio".indexOf($("#nome").val()) !== 0) {
+							var name = $("#nome").val();
+							if ("Estênio".indexOf(name) !== 0) {
 								window.location = "./cheater.html";
 							} else {
-								window.location = "./intro1.html";
+								if (name !== "Estênio") {
+									$(".error").text("Percebi que você não terminou de digitar o seu nome! Vou lhe dar a chance de terminar");
+								} else {
+									window.location = "./intro1.html";
+								}
 							}
 							return false;
 						});

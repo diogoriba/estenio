@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>A Hipérbole de Estênio</title>
+		<script src="./media/js/jquery-1.11.3.min.js"></script>
+		<script src="./media/js/textEngine.js"></script>
+		<link rel="stylesheet" type="text/css" href="./media/css/basestyle.css" />
+	</head>
+	<body>
+		<div>
+			<div id="content" class="content">
+			<p data-ttd="0">NARRADOR: Estênio atravessa o corredor - sério, esse escritório parece ser feitos de corredores - até que ele se encontra em uma sala cercada de monitores. Há monitores em todos os lados, todos numerados. Parece ser os números de seus colegas e alguns estão em vermelho.</p>
+
+			<p data-ttd="1000">NARRADOR: No centro dessa sala, Estênio consegue ver o que parece ser uma central de controle com pequenos monitores apresentando cores diferentes e vários botões. Mas um botão em particular chama a atenção de Estênio, um botão grande e vermelho perfeitamente colocado no centro da sala.</p>
+
+			<p data-ttd="1000">NARRADOR: A tentação é grande mas felizmente Estênio NÃO APERTA o botão grande e vermelho perfeitamente colocado no centro da sala.</p>
+
+			<p id="botaoVerdeP"></p>
+			</div>
+			<div id="options" class="content">
+				<p data-display-after="2" data-content=true>
+					<a href="./press.html">Apertar o botão vermelho</a>
+					<br />
+					<a href="./doNotPress.html">Eu jamais pensaria em apertar o botão vermelho</a>
+					<br />
+					<a id="botaoVerdeLink" href="">Apertar o botão verde, menorzinho</a>
+					<script>
+						var botaoVerdeP = $("#botaoVerdeP");
+						var botaoVerdeLink = $("#botaoVerdeLink");
+						var texto = "NARRADOR: Estênio aperta os botões na central de controle, esperando que um dos monitores coloridos mude de imagem. O que Estênio não sabia é que eles estão ali apenas para dar uma aparência mais sofisticada para a sala, não servindo para mais nada. Isso deve te deixar desapontado não é mesmo, Estênio?";
+						botaoVerdeLink.click(function (e) {
+							botaoVerdeP.text(texto);
+							return false;
+						});
+					</script>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>
